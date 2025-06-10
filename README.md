@@ -1,1 +1,3 @@
-# portfolio
+npm instal
+
+npm run wdio
