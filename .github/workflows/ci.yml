@@ -1,26 +1,26 @@
-name: WebdriverIO v9 Tests
-
+name: CI
 on: [push, pull_request]
-
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: ⬇️ Checkout Code
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: 🐢 Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "23.8.0"
+          node-version-file: ".nvmrc"
 
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-
-      - name: Install dependencies
+      - name: 🏗️ Install Dependencies
         run: npm install
 
-      - name: Run WebdriverIO Tests
-        run: npm run wdio
+      - name: 🧪 Test
+        run: npm run test:local
+
+      - name: 📦 Upload Logs
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: logs
+          path: logs
