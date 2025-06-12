@@ -20,6 +20,20 @@ class LoginPage extends Page {
     return $("#login-button");
   }
 
+  public get menu() {
+    return $("#react-burger-menu-btn");
+  }
+
+  public get logoutButton() {
+    return $("#logout_sidebar_link");
+  }
+  public get errorMessage() {
+    return $(".error-message-container.error");
+  }
+  public get inventoryContainer() {
+    return $("#inventory_container");
+  }
+
   /**
    * a method to encapsule automation code to interact with the page
    * e.g. to login using username and password
@@ -28,6 +42,11 @@ class LoginPage extends Page {
     await this.inputUsername.setValue(username);
     await this.inputPassword.setValue(password);
     await this.buttonSubmit.click();
+  }
+
+  public async logout() {
+    await this.menu.click();
+    await this.logoutButton.click();
   }
 }
 
