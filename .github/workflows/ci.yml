@@ -3,6 +3,14 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      USER_LOGIN: ${{ secrets.USER_LOGIN }}
+      USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+      USER_ERROR_LOGIN: ${{ secrets.USER_ERROR_LOGIN }}
+      USER_GLITCH_LOGIN: ${{ secrets.USER_GLITCH_LOGIN }}
+      USER_LOCKED_LOGIN: ${{ secrets.USER_LOCKED_LOGIN }}
+      USER_PROBLEM_LOGIN: ${{ secrets.USER_PROBLEM_LOGIN }}
+      USER_VISUAL_LOGIN: ${{ secrets.USER_VISUAL_LOGIN }}
     steps:
       - name: ⬇️ Checkout Code
         uses: actions/checkout@v4
