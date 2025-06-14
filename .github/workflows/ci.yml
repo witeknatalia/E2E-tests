@@ -3,14 +3,6 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      USER_LOGIN: ${{ secrets.USER_LOGIN }}
-      USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
-      USER_ERROR_LOGIN: ${{ secrets.USER_ERROR_LOGIN }}
-      USER_GLITCH_LOGIN: ${{ secrets.USER_GLITCH_LOGIN }}
-      USER_LOCKED_LOGIN: ${{ secrets.USER_LOCKED_LOGIN }}
-      USER_PROBLEM_LOGIN: ${{ secrets.USER_PROBLEM_LOGIN }}
-      USER_VISUAL_LOGIN: ${{ secrets.USER_VISUAL_LOGIN }}
     steps:
       - name: ⬇️ Checkout Code
         uses: actions/checkout@v4
@@ -22,6 +14,15 @@ jobs:
 
       - name: 🏗️ Install Dependencies
         run: npm install
+
+      - name: The secrets.env.json file 📝
+        run: echo '${{ secrets.USER_STANDARD_LOGIN }}' > secrets.env.json
+        run: echo '${{ secrets.USER_PASSWORD }}' > secrets.env.json
+        run: echo '${{ secrets.USER_ERROR_LOGIN }}' > secrets.env.json
+        run: echo '${{ secrets.USER_GLITCH_LOGIN }}' > secrets.env.json
+        run: echo '${{ secrets.USER_LOCKED_LOGIN }}' > secrets.env.json
+        run: echo '${{ secrets.USER_PROBLEM_LOGIN }}' > secrets.env.json
+        run: echo '${{ secrets.USER_VISUAL_LOGIN }}' > secrets.env.json
 
       - name: 🧪 Test
         run: npm run test:local
