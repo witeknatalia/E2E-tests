@@ -1,28 +1,26 @@
 name: CI
 on: [push, pull_request]
 jobs:
-  docker:
-    timeout-minutes: 10
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
+      - name: ⬇️ Checkout Code
+        uses: actions/checkout@v4
 
-      - name: Install node
-        uses: actions/setup-node@v1
+      - name: 🐢 Setup Node
+        uses: actions/setup-node@v4
         with:
-          node-version: 23.8.0
+          node-version: "23.8.0"
 
-      - name: Install dependencies
+      - name: 🏗️ Install Dependencies
         run: npm install
 
-      - name: Start containers
-        run: docker-compose -f "docker-compose.yml" up -d
+      - name: 🧪 Test
+        run: npm run test:local
 
-      - name: Run tests
-        run: npm run wdio:docker
-
-      - name: Stop containers
-        if: always()
-        run: docker-compose -f "docker-compose.yml" down
+      - name: 📦 Upload Logs
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: logs
+          path: logs

@@ -16,7 +16,8 @@
   },
   "scripts": {
     "wdio": "wdio run ./wdio.conf.ts",
-    "wdio:docker": "wdio run ./wdio.docker.conf.ts"
+    "wdio:docker": "wdio run ./wdio.docker.conf.ts",
+    "test:local": "wdio run wdio.local.conf.ts"
   },
   "dependencies": {
     "dotenv": "^16.5.0"
