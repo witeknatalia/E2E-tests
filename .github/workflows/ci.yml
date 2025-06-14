@@ -17,12 +17,6 @@ jobs:
 
       - name: The secrets.env.json file 📝
         run: echo '${{ secrets.USER_STANDARD_LOGIN }}' > secrets.env.json
-        run: echo '${{ secrets.USER_PASSWORD }}' > secrets.env.json
-        run: echo '${{ secrets.USER_ERROR_LOGIN }}' > secrets.env.json
-        run: echo '${{ secrets.USER_GLITCH_LOGIN }}' > secrets.env.json
-        run: echo '${{ secrets.USER_LOCKED_LOGIN }}' > secrets.env.json
-        run: echo '${{ secrets.USER_PROBLEM_LOGIN }}' > secrets.env.json
-        run: echo '${{ secrets.USER_VISUAL_LOGIN }}' > secrets.env.json
 
       - name: 🧪 Test
         run: npm run test:local
