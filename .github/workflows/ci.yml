@@ -4,7 +4,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      USER_LOGIN: ${{ secrets.USER_LOGIN }}
+      USER_STANDARD_LOGIN: ${{ secrets.USER_STANDARD_LOGIN }}
       USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
       USER_ERROR_LOGIN: ${{ secrets.USER_ERROR_LOGIN }}
       USER_GLITCH_LOGIN: ${{ secrets.USER_GLITCH_LOGIN }}
