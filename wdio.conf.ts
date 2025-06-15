@@ -1,3 +1,5 @@
+import { afterTest, onComplete } from "./testrail-integration";
+
 export const config: WebdriverIO.Config = {
   //
   // ====================
@@ -229,8 +231,9 @@ export const config: WebdriverIO.Config = {
    * @param {boolean} result.passed    true if test has passed, otherwise false
    * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
    */
-  // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-  // },
+  afterTest: async function (test, context, { passed }) {
+    await afterTest(test, context, passed);
+  },
 
   /**
    * Hook that gets executed after the suite has ended
@@ -262,8 +265,9 @@ export const config: WebdriverIO.Config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {Array.<String>} specs List of spec file paths that ran
    */
-  // afterSession: function (config, capabilities, specs) {
-  // },
+  afterSession: async function () {
+    await onComplete();
+  },
   /**
    * Gets executed after all workers got shut down and the process is about to exit. An error
    * thrown in the onComplete hook will result in the test run failing.
