@@ -16,7 +16,7 @@ describe("Login test", () => {
     password = process.env.USER_PASSWORD;
   });
 
-  it("should login as a standard user", async () => {
+  it("C1: should login as a standard user", async () => {
     if (!process.env.USER_STANDARD_LOGIN) {
       throw new Error("USER_LOGIN environment variable is not set");
     }
@@ -37,7 +37,7 @@ describe("Login test", () => {
     await expect(isButtonDisplayed).toBe(true);
   });
 
-  it("should try login as a locked out user", async () => {
+  it("C2: should try login as a locked out user", async () => {
     if (!process.env.USER_LOCKED_LOGIN) {
       throw new Error("USER_LOCKED_LOGIN environment variable is not set");
     }
@@ -48,7 +48,7 @@ describe("Login test", () => {
     await expect(errorMessage).toBe(true);
   });
 
-  it("should try login as a performance glitched user", async () => {
+  it("C3: should try login as a performance glitched user", async () => {
     if (!process.env.USER_GLITCH_LOGIN) {
       throw new Error("USER_GLITCH_LOGIN environment variable is not set");
     }
