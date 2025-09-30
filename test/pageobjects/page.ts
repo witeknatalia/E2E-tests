@@ -1,6 +1,3 @@
-import { browser } from "@wdio/globals";
-import "dotenv/config";
-
 /**
  * main page object containing all methods, selectors and functionality
  * that is shared across all page objects

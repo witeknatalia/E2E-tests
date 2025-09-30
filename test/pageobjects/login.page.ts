@@ -1,13 +1,6 @@
-import { $ } from "@wdio/globals";
 import Page from "./page.js";
 
-/**
- * sub page containing specific selectors and methods for a specific page
- */
 class LoginPage extends Page {
-  /**
-   * define selectors using getter methods
-   */
   public get inputUsername() {
     return $("#user-name");
   }
@@ -44,6 +37,10 @@ class LoginPage extends Page {
     await this.buttonSubmit.click();
   }
 
+  /**
+   * The `logout` function in TypeScript logs the user out by clicking on the menu and then the logout
+   * button.
+   */
   public async logout() {
     await this.menu.click();
     await this.logoutButton.click();

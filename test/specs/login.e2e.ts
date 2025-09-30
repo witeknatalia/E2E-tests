@@ -1,6 +1,4 @@
-import { expect } from "@wdio/globals";
 import LoginPage from "../pageobjects/login.page.js";
-import "dotenv/config";
 
 describe("Login test", () => {
   let password: string;

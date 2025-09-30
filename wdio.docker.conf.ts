@@ -1,6 +1,6 @@
 import { config as baseConfig } from "./wdio.conf";
 
-const config = {
+export const config = {
   ...baseConfig,
   hostname: "localhost",
   port: 4444,
@@ -17,5 +17,3 @@ const config = {
   ],
   services: ["docker"],
 };
-
-exports.config = config;

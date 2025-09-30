@@ -1,6 +1,6 @@
 import { config as sharedConfig } from "./wdio.conf";
 
-const config = {
+export const config = {
   ...sharedConfig,
   ...{
     capabilities: [
@@ -13,5 +13,3 @@ const config = {
     ],
   },
 };
-
-exports.config = config;
